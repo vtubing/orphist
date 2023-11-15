@@ -1,0 +1,24 @@
+[package]
+name = "orphist"
+version = "0.1.0"
+edition = "2021"
+authors = ["Chris Olstrom <chris@olstrom.com>"]
+license = "MIT"
+repository = "https://github.com/vtubing/orphism"
+documentation = "https://docs.rs/orphist"
+description = "a command-line interface for orphism"
+
+[dependencies]
+anyhow = "^ 1"
+clap = { version = "^ 4", features = ["derive", "env"] }
+glob = "^ 0.3"
+itertools = "^ 0.12"
+log = "^ 0.4"
+remain = "^ 0.2"
+simple_logger = { version = "^ 4", default-features = false, features = [
+  "stderr",
+  "colors",
+] }
+strum = { version = "^ 0.25", features = ["derive"] }
+
+orphism = { path = "../orphism", version = "0.1.0" }
