@@ -1,5 +1,4 @@
-use orphism::{Runtime, RuntimeError};
-use std::io::Read;
+use orphism::{Error, Runtime};
 
 #[derive(Debug, Clone, clap::Parser)]
 #[remain::sorted]
@@ -43,7 +42,7 @@ impl Load {
             log::info!("loaded model from directory {root:?}");
             runtime
           }
-          Err(RuntimeError::RuntimePathContainsMultipleModels(_)) => {
+          Err(Error::RuntimePathContainsMultipleModels(_)) => {
             log::debug!("failed because directory contains multiple models, attempting to load single model");
             match Runtime::new_from_model_path(model.clone()) {
               Ok(runtime) => {
@@ -55,9 +54,7 @@ impl Load {
           }
           Err(error) => Err(error)?,
         };
-        let model = runtime.load()?;
-        let mut header = [0u8; 64];
-        model.data.moc.clone().take(64).read_exact(&mut header)?;
+        let model = runtime.load_model()?;
         models.push(model);
       }
     }
@@ -68,7 +65,7 @@ impl Load {
       log::info!("attempting to parse .moc3 data from all loaded models");
 
       for model in models {
-        let model = orphism::moc3::Model::read(model.data.moc)?;
+        let model = orphism::moc3::Model::read(model.data)?;
 
         println!("{model:#?}");
       }

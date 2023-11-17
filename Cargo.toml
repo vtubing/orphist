@@ -1,10 +1,10 @@
 [package]
 name = "orphist"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Chris Olstrom <chris@olstrom.com>"]
 license = "MIT"
-repository = "https://github.com/vtubing/orphism"
+repository = "https://github.com/vtubing/orphist"
 documentation = "https://docs.rs/orphist"
 description = "a command-line interface for orphism"
 
@@ -21,4 +21,4 @@ simple_logger = { version = "^ 4", default-features = false, features = [
 ] }
 strum = { version = "^ 0.25", features = ["derive"] }
 
-orphism = { path = "../orphism", version = "0.1.0" }
+orphism = { path = "../orphism", version = "0.2.0" }

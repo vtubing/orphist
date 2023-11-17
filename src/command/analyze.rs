@@ -42,9 +42,9 @@ impl Analyze {
       (None, Some(path)) => Runtime::new_from_runtime_path(path)?,
     };
 
-    let model = runtime.load()?;
+    let model = runtime.load_model()?;
 
-    let mut moc3 = Cursor::new(model.data.moc);
+    let mut moc3 = Cursor::new(model.data);
     moc3.seek(SeekFrom::Start(start_at))?;
     let mut buf = [0u8; 4];
 
