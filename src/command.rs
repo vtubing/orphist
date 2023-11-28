@@ -1,4 +1,5 @@
 mod analyze;
+mod caff;
 mod load;
 
 #[derive(Debug, Clone, clap::Parser)]
@@ -13,6 +14,7 @@ pub struct Command {
 #[derive(Debug, Clone, clap::Subcommand)]
 enum Subcommand {
   Analyze(analyze::Analyze),
+  Caff(caff::Caff),
   Load(load::Load),
 }
 
@@ -22,6 +24,7 @@ impl Command {
 
     match subcommand {
       Subcommand::Analyze(command) => command.execute(),
+      Subcommand::Caff(command) => command.execute(),
       Subcommand::Load(command) => command.execute(),
     }
   }

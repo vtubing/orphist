@@ -1,6 +1,6 @@
 [package]
 name = "orphist"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 authors = ["Chris Olstrom <chris@olstrom.com>"]
 license = "MIT"
@@ -21,4 +21,5 @@ simple_logger = { version = "^ 4", default-features = false, features = [
 ] }
 strum = { version = "^ 0.25", features = ["derive"] }
 
-orphism = { path = "../orphism", version = "0.2.0" }
+orphism = { path = "../orphism", version = "0.3.0" }
+synthzip = { path = "../synthzip", version = "0.1.0" }
